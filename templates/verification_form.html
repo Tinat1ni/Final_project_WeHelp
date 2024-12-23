@@ -1,0 +1,42 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ვერიფიკაცია</title>
+  <link rel="stylesheet" href="{% static 'assets/css/verify.css' %}">
+
+</head>
+<body>
+   <div class="logo">
+                                    <a href="{% url 'user:home' %}"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                                </div>
+         {% if messages %}
+       <div class="messages">
+           {% for message in messages %}
+               <div class="alert {{ message.tags }}">
+                   {{ message }}
+               </div>
+           {% endfor %}
+       </div>
+       {% endif %}
+
+  <div class="container">
+
+
+
+    <!-- Title section -->
+    <div class="content">
+        <form method="POST" style="font-size:25px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="button" type="submit">დადასტურება</button>
+</form>
+
+    </div>
+  </div>
+</body>
+</html>

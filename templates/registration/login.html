@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Login</title>
+      <link rel="stylesheet" href="{% static 'assets/css/new_style.css' %}">
+          <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/progressbar_barfiller.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animated-headline.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+   </head>
+   <body>
+
+           <!-- Header Start -->
+        <div class="header-area header-transparent">
+            <div class="main-header ">
+                <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="c">
+                                <div class="logo">
+                                    <a href="{% url 'user:home' %}"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10">
+                                <div class="menu-wrapper d-flex align-items-center justify-content-end">
+                                    <!-- Main-menu -->
+                                    <div class="main-menu d-none d-lg-block">
+                                        <nav>
+                                            <ul id="navigation">
+                                                <li class="active" ><a href="{% url 'user:home' %}" style="color: rgba(0, 0, 0, 0.0); font-size: 19px;">მთავარი</a></li>
+
+<!--                                                <li><a href="about.html">About</a></li>-->
+                                                <li><a href="#" style="font-size: 18px;" ></a>
+
+                                                </li>
+<!--                                                <li><a href="contact.html">Contact</a></li>-->
+                                                <!-- Button -->
+                                                <!-- <li class="button-header margin-left "><a href="#" class="btn">Join</a></li> -->
+
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+      <div class="wrapper">
+         <div class="title">
+            შესვლა 
+         </div>
+         <form method="POST" action="{% url 'user:login' %}">
+            {% csrf_token %}
+            <div class="field">
+               <input type="text" name="username" required>
+               <label>username </label>
+            </div>
+            <div class="field">
+               <input type="password" name="password" required>
+               <label>Password</label>
+            </div>
+            <div class="content">
+
+            </div>
+            <div class="field">
+               <input type="submit" value="Login">
+            </div>
+            <div class="signup-link">
+               <a href="{% url 'user:register' %}">რეგისტრაცია</a>
+            </div>
+         </form>
+      </div>
+   </body>
+</html>

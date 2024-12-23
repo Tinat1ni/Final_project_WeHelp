@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Responsive Registration Form | CodingLab </title>
+  <link rel="stylesheet" href="{% static 'assets/css/registration_style.css' %}">
+</head>
+<body>
+  <div class="container">
+    <!-- Title section -->
+    <div class="title">რეგისტრაცია</div>
+    <div class="content">
+      <!-- Registration form -->
+     <form id="registerForm">
+        <div class="input-box">
+          <strong>
+            <label id="name-label" for="name">Name</label><br></br>
+          </strong>
+          <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name" required/>
+        </div>
+        <div class="form-group">
+          <strong>
+            <label id="email-label" for="email">Email</label><br></br></strong>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Enter your Email" required/>
+        </div>
+        <div class="form-group"><strong>
+              <label id="number-label" for="number">Age <span class="clue">(optional)</span></label><br></br></strong>
+            <input type="number" name="age" id="number" min="10" max="99" class="form-control" placeholder="Age"/>
+        </div>
+        <div class="form-group">
+          <p>Which option describes your current role?</p>
+          <select id="dropdown" name="role" class="form-control" required>
+            <option>Select current role</option>
+            <option value="Student">Student</option>
+            <option value="Working">Working</option>
+            <option value="Bussiness">Bussiness</option>
+            <option value="Home maker">Home maker</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <p>Select your gender?</p>
+          <label>
+            <input type="radio" name="gender" value="Male" class="input-radio"/>Male</label><br></br>
+            <label>
+              <input type="radio" name="gender" value="Female" class="input-radio"/>Female</label><br></br>
+            <label>
+              <input type="radio" name="gender" value="Other" class="input-radio"/>Other</label>
+        </div>
+        <div class="form-group">
+          <p> Would you recommend this product to others?</p>
+            <label>
+            <input type="radio" name="user-recommend" value="Definitely" class="input-radio"/>
+               Definitely</label>
+            <br></br>
+            <label>
+              <input type="radio" name="user-recommend" value="Maybe" class="input-radio"/>Maybe</label>
+              <br></br>
+            <label>
+              <input type="radio" name="user-recommend" value="Not sure" class="input-radio"/>Not sure
+            </label>
+        </div>
+        <div class="form-group">
+          <p>What made you to buy this product?<span class="clue">(Check all that apply)</span></p>
+          <label>
+            <input name="prefer" value="Talcum powder" type="checkbox" class="input-checkbox"/>Talcum powder</label><br></br>
+          <label>
+            <input name="prefer" value="Perfume" type="checkbox" class="input-checkbox"/>Perfume</label><br></br>
+          <label>
+            <input name="prefer" value="Bathing soap" type="checkbox" class="input-checkbox"/>Bathing soap</label><br></br>
+          <label>
+            <input name="prefer" value="Washing soap" type="checkbox" class="input-checkbox"/>Washing soap</label><br></br>
+          <label>
+            <input name="prefer" value="sanitizer" type="checkbox" class="input-checkbox"/>Sanitizer
+            </label><br></br>
+          <label>
+            <input name="prefer" value="Shampoo" type="checkbox" class="input-checkbox"/>Shampoo</label><br></br>
+          <label>
+            <input name="prefer" value="face-wash" type="checkbox" class="input-checkbox"/>Face-wash</label><br></br>
+        </div>
+        <div class="form-group">
+            <p>აღწერა:</p>
+                <textarea id="comments" class="input-textarea" name="comment" placeholder="Enter your comment here..."></textarea>
+        </div>
+        <button type="submit" id="submit" value="submit" class="submit-button">Submit</button>
+    </form>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+

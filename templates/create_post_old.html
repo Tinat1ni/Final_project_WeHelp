@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WeHelp</title>
+  <link rel="stylesheet" href="{% static 'assets/css/create_post_style.css' %}">
+</head>
+  <body>
+    <div class="group">
+      <header class="header">
+        <h1 id="title" class="text-center"></h1>
+        <p id="description" class="description text-center"></p>
+      </header>
+      <form method="post" enctype="multipart/form-data" id="survey-form">
+          {% csrf_token %}
+
+        <div class="form-group">
+
+        <div class="form-group"><strong>
+              <label id="text" style="color:#660066; font-size:20px;" >სათაური <span class="clue" style="color:#660066;">(optional)</span></label><br></br></strong>
+            <input type="text" name="description"  class="form-control" placeholder="სათაური"/>
+        </div>
+
+        <div class="form-group">
+          <p style="color:#660066">აირჩიეთ:<span class="clue"> </span></p>
+            <div class="form-group-checkboxes">
+          <label>
+            <input name="prefer"  value="სისხლი" type="checkbox" class="input-checkbox"/> სისხლი</label><br></br>
+          <label>
+            <input name="prefer" value="მოხუცი" type="checkbox" class="input-checkbox"/> მოხუცი</label><br></br>
+          <label>
+            <input name="prefer" value="ბავშვი" type="checkbox" class="input-checkbox"/> ბავშვი</label><br></br>
+          <label>
+            <input name="prefer" value="შშმ პირი" type="checkbox" class="input-checkbox"/> შშმ პირი</label><br></br>
+          <label>
+            <input name="prefer" value="გარემო" type="checkbox" class="input-checkbox"/> გარემო
+            </label><br></br>
+          <label>
+            <input name="prefer" value="საკვები" type="checkbox" class="input-checkbox"/> საკვები</label><br></br>
+          <label>
+              <input name="prefer" value="custom_input" type="checkbox" class="input-checkbox"/> <input type="text"> </label>
+          <label>
+
+          </label>
+                <label>
+              <input name="prefer" value="custom_input" type="checkbox" class="input-checkbox"/> <input type="text"> </label> <br> </br>
+          </label>
+
+        </div>
+        </div>
+        </div>
+            <div class="form-group">
+              <p style="color:#660066;" >Deadline:</p>
+              <label for="deadline-date" style="color:#660066">თარიღი:</label><br>
+              <input type="date" id="deadline-date" name="deadline-date" class="form-control"><br><br>
+
+              <label for="deadline-time" style="color:#660066">დრო: <span class="clue" style="color:#660066;">(optional)</span></label><br>
+              <input type="time" id="deadline-time" name="deadline-time" class="form-control">
+            </div>
+            <div class="form-group">
+  <p style="color:#660066;">ლოკაცია:</p>
+
+  <input type="text" style="color:#660066;" id="location" name="location" class="form-control" placeholder="ქალაქი">
+</div>
+        <div class="form-group">
+            <p style="color:#660066;">აღწერა:</p>
+                <textarea id="comments" class="input-textarea" name="comment" placeholder="აღწერა"></textarea>
+        </div>
+
+          <div class="form-group">
+          <p style="color:#660066;">ფოტოს დამატება: <span class="clue" style="color:#660066;">(optional)</span> </p>
+          <input type="file" name="image" class="form-control" accept="image/*">
+        </div>
+        <button type="submit" style="color:#660066;" id="submit" value="submit" class="submit-button">პოსტის განთავსება</button>
+    </form>
+</div>
+
+</body>
+</html>
+
+
+

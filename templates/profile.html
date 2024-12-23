@@ -1,0 +1,267 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>WeHelp</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--    <link rel="manifest" href="site.webmanifest">-->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/progressbar_barfiller.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animated-headline.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/profile_style.css' %}">
+
+</head>
+
+<body>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static 'assets/img/logo/loder.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+
+    <!-- Header Start -->
+    <div class="header-area header-transparent">
+        <div class="main-header">
+            <div class="header-bottom header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center" >
+                        <!-- Logo -->
+                        <div class="c">
+                            <div class="logo">
+                                <a href="{% url 'user:home' %}"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10">
+                            <div class="menu-wrapper d-flex align-items-center justify-content-end">
+                                <!-- Main-menu -->
+                                <div class="main-menu d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li class="active"><a href="{% url 'user:home' %}" style="font-size: 19px; color: white; text-decoration: none;" onmouseover="this.style.color='#FFFF00'" onmouseout="this.style.color='white'">მთავარი</a></li>
+                                            <li><a href="{% url 'post:post_list' %}" style="font-size: 18px; color: white; text-decoration: none;" onmouseover="this.style.color='#FFFF00'" onmouseout="this.style.color='white'">ვის შემიძლია დავეხმარო?</a></li>
+                                            <li>
+                                                {% if user.is_authenticated %}
+                                                    <a href="{% url 'post:create_post' %}" style="font-size: 18px; color: white; text-decoration: none;" onmouseover="this.style.color='#FFFF00'" onmouseout="this.style.color='white'">პოსტის განთავსება</a>
+                                                {% else %}
+                                                    <a href="{% url 'user:login' %}" style="font-size: 18px; color: white; text-decoration: none;" onmouseover="this.style.color='#FFFF00'" onmouseout="this.style.color='white'">პოსტის განთავსება</a>
+                                                {% endif %}
+                                            </li>
+                                            <li class="button-header">
+                                                {% if user.is_authenticated %}
+                                                    <form action="{% url 'user:logout' %}" method="post">
+                                                        {% csrf_token %}
+                                                        <button type="submit" class="btn btn3">გამოსვლა</button>
+                                                    </form>
+                                                {% else %}
+                                                    <a href="{% url 'user:login' %}" class="btn btn3">შესვლა</a>
+                                                {% endif %}
+                                            </li>
+                                            <li class="profile-icon-item">
+                                                {% if user.is_authenticated %}
+                                                    <a href="{% url 'user:profile' %}"  class="profile-icon">
+                                                        <i class="fas fa-user-circle"></i>
+                                                    </a>
+                                                {% endif %}
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <main>
+        <div class="test">
+        <!--? slider Area Start-->
+        <div class="main-container">
+            <!-- Info container -->
+
+
+            <!-- Sidebar Menu -->
+           <!-- Sidebar Menu -->
+<div class="categories-sidebar_custom">
+    <ul class="categories-list">
+        <li><a href="?category=information"><i class="fas fa-heart"></i>თქვენი ინფორმაცია</a></li>
+        <li><a href="?category=user_posts"><i class="fas fa-heart"></i> თქვენი პოსტები</a></li>
+        <li><a href="?category=chosen_posts"><i class="fas fa-heart"></i> თქვენი არჩეული პოსტები</a></li>
+
+    </ul>
+</div>
+
+
+<!-- Info Container -->
+<div class="info-container" style="color:black;">
+    <h1>
+
+        {% if category == 'user_posts' %}
+
+            თქვენი პოსტები <br>
+        {% elif category == 'chosen_posts' %}
+            თქვენი არჩეული პოსტები <br>
+        {% else %}
+            თქვენი ინფორმაცია
+          <br>
+        {% endif %}
+    </h1>
+ {% if not category or category == 'information' %}
+                    <!-- Display User Information -->
+                    <div class="user-info" >
+                        <br>
+                        <div class="user_email">
+                        <p style="color:white;"><strong>Email:</strong> {{ user.email }}</p>
+<!--                        <button > შეცვლა </button>-->
+                            </div>
+
+                        <p style="color:white;"><strong>Username:</strong> {{ user.username }}</p>
+                        <p style="color:white;">ტელეფონის ნომერი: {{ user.phone_number }}</p>
+                    </div>
+{% endif %}
+    {% if category == 'user_posts' or category == 'chosen_posts' %}
+    <!-- Loop through the posts and display them -->
+    {% for post in posts %}
+    <br>
+        <div class="post-item">
+            <h2 style="color:white;">
+    <a href="{% url 'post:detail' post.id %}" style="color:white; text-decoration:none;">
+        {{ post.title }}
+    </a>
+</h2>
+            <p style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; color:white;">{{ post.description }}</p>  <!-- Display the post description -->
+            <p style="color:white;">ლოკაცია: {{ post.location }}<br>
+                        {% if post.deadline_date %}
+                        <p style="color:white;">Deadline: {{ post.deadline_date|date:"F j, Y" }}
+                        {% if post.deadline_time %}
+                            / {{ post.deadline_time|time:"g:i a" }}
+                        {% endif %}
+                        </p>
+                    {% else %}
+                        <p>No deadline set</p>
+                    {% endif %}
+            {% if category == 'user_posts' %}
+                <!-- Show buttons only when 'user_posts' category is selected -->
+            <form method="post" action="{% url 'user:profile' %}">
+                {% csrf_token %}
+                  <input type="hidden" name="post_id" value="{{ post.id }}">
+                <input type="hidden" name="action" value="delete">
+                <div class="buttons-container">
+
+                    <button class="noselect">
+                        <span class="text">წაშლა</span>
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path>
+                            </svg>
+                        </span>
+                    </button>
+
+
+                </div>
+                </form>
+             <form method="get" action="{% url 'user:post_edit' post.id %}">
+    <button type="submit" class="button2">
+        რედაქტირება
+    </button>
+</form>
+              <form method="post" action="">
+            {% csrf_token %}
+            <input type="hidden" name="post_id" value="{{ post.id }}">
+            <input type="hidden" name="action" value="mark_completed">
+
+            <button
+                type="submit"
+                style="display: flex; justify-content: center; align-items: center; text-align: center; background-color: {% if post.completed %}grey{% else %}#FF66FF{% endif %}; color: white;"
+                {% if post.completed %}disabled{% endif %}
+            >
+                {% if post.completed %}დასრულებული{% else %}მონიშნეთ როგორც დასრულებული{% endif %}
+            </button>
+        </form>
+            {% endif %}
+        </div>
+     <div class="post-divider"></div>
+    {% empty %}
+        <p>თქვენ არ გაქვთ პოსტები.</p>
+    {% endfor %}
+    {% endif %}
+
+
+
+
+</div>
+        </div>
+        </div>
+    </main>
+
+
+
+<!-- JS here -->
+<script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<!-- Jquery Mobile Menu -->
+<script src="{% static 'assets/js/jquery.slicknav.min.js' %}"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/slick.min.js' %}"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="{% static 'assets/js/wow.min.js' %}"></script>
+<script src="{% static 'assets/js/animated.headline.js' %}"></script>
+<script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
+
+<!-- Date Picker -->
+<script src="{% static 'assets/js/gijgo.min.js' %}"></script>
+<!-- Nice-select, sticky -->
+<script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+<!-- Progress -->
+<script src="{% static 'assets/js/jquery.barfiller.js' %}"></script>
+
+<!-- counter , waypoint,Hover Direction -->
+<script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'assets/js/hover-direction-snake.min.js' %}"></script>
+
+<!-- contact js -->
+<script src="{% static 'assets/js/contact.js' %}"></script>
+<script src="{% static 'assets/js/jquery.form.js' %}"></script>
+<script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'assets/js/mail-script.js' %}"></script>
+<script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="{% static 'assets/js/plugins.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+</html>

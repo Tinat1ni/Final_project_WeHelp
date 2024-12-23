@@ -1,0 +1,153 @@
+<!--{% load static %}-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--  <title>WeHelp</title>-->
+<!--  <link rel="stylesheet" href="{% static 'assets/css/create_post_style.css' %}">-->
+<!--</head>-->
+<!--<body>-->
+<!--  <div class="group">-->
+<!--    <header class="header">-->
+<!--      <h1 id="title" class="text-center"></h1>-->
+<!--      <p id="description" class="description text-center"></p>-->
+<!--    </header>-->
+<!--    <form method="post" action="{% url 'user:home'%}" enctype="multipart/form-data" id="survey-form">-->
+<!--        {% csrf_token %}-->
+
+<!--        <div class="form-group">-->
+<!--            <strong>-->
+<!--              <label id="text" style="color:#660066; font-size:20px;">სათაური <span class="clue" style="color:#660066;">(optional)</span></label><br>-->
+<!--            </strong>-->
+<!--            {{ form.title }}-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--    <p style="color:#660066">აირჩიეთ:</p>-->
+<!--    <div class="form-group-checkboxes">-->
+<!--        {{ form.prefer }} &lt;!&ndash; Render the entire prefer field here &ndash;&gt;-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--        <div class="form-group">-->
+<!--          <p style="color:#660066;">Deadline:</p>-->
+<!--          <label for="deadline-date" style="color:#660066">თარიღი:</label><br>-->
+<!--          {{ form.deadline_date }}<br><br>-->
+<!--          <label for="deadline-time" style="color:#660066">დრო: <span class="clue" style="color:#660066;">(optional)</span></label><br>-->
+<!--          {{ form.deadline_time }}-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--          <p style="color:#660066;">ლოკაცია:</p>-->
+<!--          {{ form.location }}-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--          <p style="color:#660066;">აღწერა:</p>-->
+<!--          {{ form.description }}-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--          <p style="color:#660066;">ფოტოს დამატება: <span class="clue" style="color:#660066;">(optional)</span></p>-->
+<!--          {{ form.picture}}-->
+<!--        </div>-->
+
+<!--        <button type="submit" style="color:#660066;" id="submit" value="submit" class="submit-button">პოსტის განთავსება</button>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WeHelp</title>
+  <link rel="stylesheet" href="{% static 'assets/css/create_post_style.css' %}">
+</head>
+  <body>
+  <div class="logo">
+                                    <a href="{% url 'user:home' %}"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                                </div>
+    <div class="group">
+      <header class="header">
+        <h1 id="title" class="text-center"></h1>
+        <p id="description" class="description text-center"></p>
+      </header>
+      <form method="post" action="{% url 'post:create_post' %}" enctype="multipart/form-data" id="survey-form">
+          {% csrf_token %}
+         <div class="form-group">
+          <!-- Render the form fields -->
+        <div class="form-group">
+            <strong>
+              <label  id="text" style="color:#660066; font-size:20px;">სათაური <span class="clue" style="color:#660066;">(optional) <br></span></label><br>
+            </strong>
+            {{ form.title }}
+        </div>
+
+<div class="form-group">
+    <p style="color:#660066;">აირჩიეთ:<span class="clue"> </span></p>
+    <div class="form-group-checkboxes">
+        {% for value, label in form.prefer.field.choices %}
+            <label>
+                <input name="prefer" type="checkbox" value="{{ value }}" class="input-checkbox" {% if value in form.prefer.value %}checked{% endif %}/> {{ label }}
+            </label><br><br>
+        {% endfor %}
+
+        <!-- Custom input fields -->
+ <label for="custom_input_1">
+    <input type="checkbox" name="custom_input_1" value="True" {% if form.custom_input_1.value %}checked{% endif %}>
+
+</label><br><br>
+
+<!-- Input for custom_input_1 -->
+<label for="custom_input_1">
+    <input type="text" name="custom_input_1" style="margin-left:-210px;" value="{{ form.custom_input_1.value|default:'' }}">
+</label><br><br>
+
+<!-- Checkbox for custom_input_2 -->
+<label for="custom_input_2">
+    <input type="checkbox" name="custom_input_2" value="True" {% if form.custom_input_2.value %}checked{% endif %}>
+
+</label><br><br>
+
+<!-- Input for custom_input_2 -->
+<label for="custom_input_2">
+    <input type="text" name="custom_input_2" style="margin-left:-210px;" value="{{ form.custom_input_2.value|default:'' }}">
+</label><br><br>
+        </div>
+    </div>
+<div class="form-group">
+        <p style="color:#660066;">Deadline:</p>
+
+        <label for="deadline-date" style="color:#660066;">თარიღი:</label><br>
+        {{ form.deadline_date }}<br><br>
+
+        <label for="deadline-time" style="color:#660066;">დრო: <span class="clue" style="color:#660066;">(optional)</span></label><br>
+        {{ form.deadline_time }}
+    </div>
+
+
+      <div class="form-group">
+    <p style="color:#660066;">ლოკაცია:</p>
+    {{ form.location }}
+</div>
+
+        <div class="form-group">
+        <p style="color:#660066;">აღწერა:</p>
+        {{ form.description }}
+    </div>
+
+          <div class="form-group">
+              <p style="color:#660066;">ფოტოს დამატება: <span class="clue" style="color:#660066;">(optional)</span></p>
+              {{ form.picture }}
+          </div>
+
+          <button type="submit" style="color:#660066;" id="submit" value="submit" class="submit-button">პოსტის განთავსება</button>
+         </div>
+      </form>
+    </div>
+
+</body>
+</html>

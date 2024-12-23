@@ -1,0 +1,336 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>ვის შემიძლია დავეხმარო</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'assets/css/custom_posts.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/progressbar_barfiller.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animated-headline.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+
+<body>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static 'assets/img/logo/loder.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+     <!-- Header Start -->
+        <div class="header-area header-transparent">
+            <div class="main-header ">
+                <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="c">
+                                <div class="logo">
+                                    <a href="{% url 'user:home' %}"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10">
+                                <div class="menu-wrapper d-flex align-items-center justify-content-end">
+                                    <!-- Main-menu -->
+                                    <div class="main-menu d-none d-lg-block">
+                                        <nav>
+                                            <ul id="navigation">
+                                                <li class="active" ><a href="{% url 'user:home' %}" style="font-size: 19px;  color: white; text-decoration: none;" onmouseover="this.style.color='#FFFF00'" onmouseout="this.style.color='white'" >მთავარი</a></li>
+                                                <li><a href="{% url 'post:post_list' %}" style="font-size: 18px; color: white; text-decoration: none;" onmouseover="this.style.color='#FFFF00'" onmouseout="this.style.color='white'">ვის შემიძლია დავეხმარო?</a>
+<!--
+                                                </li>
+<!--                                                <li><a href="about.html">About</a></li>-->
+                                                <li>
+                                                    {% if user.is_authenticated %}
+                                                        <a href="{% url 'post:create_post' %}" style="font-size: 18px; color: white; text-decoration: none;" onmouseover="this.style.color='#FFFF00'" onmouseout="this.style.color='white'">პოსტის განთავსება</a>
+                                                    {% else %}
+                                                        <a href="{% url 'user:login' %}" style="font-size: 18px; color: white; text-decoration: none;" onmouseover="this.style.color='#FFFF00'" onmouseout="this.style.color='white'">პოსტის განთავსება</a>
+                                                    {% endif %}
+
+<!--                                                <li><a href="contact.html">Contact</a></li>-->
+                                                <!-- Button -->
+                                                <!-- <li class="button-header margin-left "><a href="#" class="btn">Join</a></li> -->
+                                                <li class="button-header">
+                                                    {% if user.is_authenticated %}
+                                                        <form action="{% url 'user:logout' %}" method="post">
+                                                            {% csrf_token %}
+                                                            <button type="submit" class="btn btn3">გამოსვლა</button>
+                                                        </form>
+                                                    {% else %}
+                                                        <a href="{% url 'user:login' %}" class="btn btn3">შესვლა</a>
+                                                    {% endif %}
+                                                </li>
+                                                 <!-- Profile Icon with fa-user-alt -->
+                                                <li class="profile-icon-item">
+                                                    {% if user.is_authenticated %}
+                                                        <a href="{% url 'user:profile' %}" class="profile-icon">
+                                                            <i class="fas fa-user-circle"></i>
+                                                        </a>
+                                                    {% endif %}
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    <main>
+        <!--? slider Area Start-->
+
+        <section class="slider-area slider-area2">
+            <div class="slider-active">
+                <!-- Single Slider -->
+                <div class="single-slider slider-height2">
+                    <div class="container">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Courses area start -->
+        <div class="courses-area section-padding40 fix">
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-8">
+                        <form method="get" action="{% url 'post:post_search' %}">
+                        <div class="search-box">
+
+                    <input type="text" class="search-input" name="q" placeholder="ძებნა" value="{{ request.GET.q }}">
+                    <button type="submit" class="search-button">
+                        <i class="fas fa-search"></i> <!-- Font Awesome search icon -->
+                    </button>
+
+                </form>
+
+                </div>
+                    </div>
+                </div>
+                                  <div class="categories-sidebar_custom" >
+    <ul class="categories-list">
+        <li><a href="{% url 'post:posts_by_category' category_name='ბავშვი' %}"><i class="fas fa-heart"></i> ბავშვი</a></li>
+        <li><a href="{% url 'post:posts_by_category' category_name='მოხუცი' %}"><i class="fas fa-heart"></i> მოხუცი</a></li>
+        <li><a href="{% url 'post:posts_by_category' category_name='შშმ პირი' %}"><i class="fas fa-heart"></i> შშმ პირი</a></li>
+        <li><a href="{% url 'post:posts_by_category' category_name='გარემო' %}"><i class="fas fa-heart"></i> გარემო</a></li>
+        <li><a href="{% url 'post:posts_by_category' category_name='სისხლი' %}"><i class="fas fa-heart"></i> სისხლი</a></li>
+        <li><a href="{% url 'post:posts_by_category' category_name='საკვები' %}"><i class="fas fa-heart"></i> საკვები</a></li>
+    </ul>
+</div>
+
+
+               <div class="row">
+    {% for post in posts %}
+    <div class="col-lg-4" style="border: 2px solid pink; border-radius:20px; margin-bottom:10px; ">
+        <div class="properties properties2 mb-30">
+            <div class="properties__card">
+
+                <div class="properties__img overlay1">
+                    <a href="{% url 'post:detail' pk=post.pk %}">
+                        {% if post.picture %}
+                            <img src="{{ post.picture.url }}" class="resized-image" >
+                        {% else %}
+                            <!-- Fallback image if no picture is available -->
+                            <img src="{% static 'default_images/default_picture.png' %}" alt="Default Image">
+                        {% endif %}
+                    </a>
+
+
+
+
+                </div>
+
+
+                <div class="properties__caption">
+                     <h3><a href="{% url 'post:detail' post.pk %}" style="text-decoration: none;">{{ post.title }}</a></h3>
+                    <br>
+                    <p>
+                        {% for category in post.categories.all %}
+
+                            {{ category.name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                         {% if post.custom_input_1 %}
+            <span>{{ post.custom_input_1 }}</span><br>
+        {% endif %}
+
+        {% if post.custom_input_2 %}
+            <span>{{ post.custom_input_2 }}</span><br>
+        {% endif %}
+                    </p>
+                    <p>ლოკაცია:<span style="color:#330066; font-weight:bold;"> {{ post.location }}</span><br>
+
+
+
+                    <p style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;"> {{ post.description }}</p>
+
+
+                    <p>ავტორი: <span style="color: black; font-weight: bold;">{{ post.author.username }}</span></p>
+                                {% if post.completed %}
+                                    <p>სტატუსი: <span style="color: red;">დასრულებული</span></p>
+                                {% else %}
+                                     <p>სტატუსი: <span style="color: green;">აქტიური</span></p>
+                                {% endif %}
+
+                    {% if post.deadline_date and post.deadline_time %}
+                        <p>დედლაინი: <span style="color:#CC6600"> {{ post.deadline_date|date:"d F, Y" }} / {{ post.deadline_time|time:"H:i" }}</span>
+                    {% elif post.deadline_date and not post.deadline_time %}
+                           <p>დედლაინი: <span style="color:#CC6600">  {{ post.deadline_date|date:"d F, Y" }}</span></p>
+                    {% endif %}
+                    <p style="">განთავსების დრო: <br><span>{{ post.deadline_date|date:"d/m/Y" }} / {{ post.deadline_time|time:"H:i" }}</span></p>
+                    <a href="{% url 'post:detail' post.pk %}" class="border-btn border-btn2" >გაიგე მეტი</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+ <div class="col-12">
+                    <div class="pagination d-flex justify-content-center mt-5" style="color:red;">
+                    {% if page_obj.has_previous %}
+                       <a href="?page={{ page_obj.previous_page_number }}" class="rounded">&laquo;</a>
+                    {% endif %}
+                    {% for page_num in paginator.page_range %}
+                        {% if page_obj.number == page_num %}
+                            <a href="?page={{ page_num }}" class="active rounded">{{ page_num }}</a>
+                        {% else %}
+                           <a href="?page={{ page_num }}" class="rounded">{{ page_num }}</a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                          <a href="?page={{ page_obj.next_page_number }}" class="rounded">&raquo;</a>
+                    {% endif %}
+                     </div>
+                         </div>
+                    </div>
+
+
+
+
+            </div>
+        </div>
+
+    </main>
+    <footer>
+        <div class="footer-wrappper footer-bg">
+           <!-- Footer Start-->
+           <div class="footer-area footer-padding">
+               <div class="container">
+                   <div class="row justify-content-between">
+                       <div class="col-xl-4 col-lg-5 col-md-4 col-sm-6">
+                           <div class="single-footer-caption mb-50">
+                               <div class="single-footer-caption mb-30">
+                                   <!-- logo -->
+<!--                                   <div class="footer-logo mb-25">-->
+<!--                                       <a href="index.html"><img src="{% static 'assets/img/logo/logo2_footer.png' %}" alt=""></a>-->
+<!--                                   </div>-->
+
+                                   <!-- social -->
+                                   <div class="footer-social">
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+
+                       <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
+
+                       </div>
+
+                   </div>
+               </div>
+           </div>
+           <!-- footer-bottom area -->
+           <div class="footer-bottom-area">
+               <div class="container">
+                   <div class="footer-border">
+
+                      </div>
+                  </div>
+              </div>
+              <!-- Footer End-->
+          </div>
+      </footer> 
+      <!-- Scroll Up -->
+      <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+<!-- JS here -->
+<script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<!-- Jquery Mobile Menu -->
+<script src="{% static 'assets/js/jquery.slicknav.min.js' %}"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/slick.min.js' %}"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="{% static 'assets/js/wow.min.js' %}"></script>
+<script src="{% static 'assets/js/animated.headline.js' %}"></script>
+<script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
+
+<!-- Date Picker -->
+<script src="{% static 'assets/js/gijgo.min.js' %}"></script>
+<!-- Nice-select, sticky -->
+<script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+<!-- Progress -->
+<script src="{% static 'assets/js/jquery.barfiller.js' %}"></script>
+
+<!-- counter , waypoint,Hover Direction -->
+<script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'assets/js/hover-direction-snake.min.js' %}"></script>
+
+<!-- contact js -->
+<script src="{% static 'assets/js/contact.js' %}"></script>
+<script src="{% static 'assets/js/jquery.form.js' %}"></script>
+<script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'assets/js/mail-script.js' %}"></script>
+<script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="{% static 'assets/js/plugins.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

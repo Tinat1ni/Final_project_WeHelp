@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>რეგისტრაცია</title>
+  <link rel="stylesheet" href="{% static 'assets/css/registration_style.css' %}">
+
+</head>
+<body>
+   <div class="logo">
+                                    <a href="{% url 'user:home' %}"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                                </div>
+
+  <div class="container">
+    <!-- Title section -->
+    <div class="title">რეგისტრაცია</div>
+    <div class="content">
+      <!-- Registration form -->
+      <form id="registerForm"  method="POST" action="" >
+        {% csrf_token %}
+
+
+        <div class="user-details">
+          <!-- Input for Full Name -->
+  
+          <!-- Input for Username -->
+          <div class="input-box">
+            <span class="details"></span>
+            <input type="text" id="username" name='username' placeholder="Username" required >
+            {% if form.username.errors %}
+                    <div class="error-message">
+                        {% for error in form.username.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+          </div>
+          <div class="input-box">
+            <span class="details"></span>
+            <input type="password" id="password" name="password" placeholder="პაროლი" required>
+            {% if form.password.errors %}
+                    <div class="error-message">
+                        {% for error in form.password.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+          </div>
+          <!-- Input for Email -->
+          <div class="input-box">
+            <span class="details"></span>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            {% if form.email.errors %}
+                    <div class="error-message">
+                        {% for error in form.email.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+          </div>
+
+          <div class="input-box">
+            <span class="details"></span>
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="დაადასტურეთ პაროლი" required>
+            {% if form.confirm_password.errors %}
+                    <div class="error-message">
+                        {% for error in form.confirm_password.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+          </div>
+          <!-- Input for Phone Number -->
+          <div class="input-box">
+            <span class="details"></span>
+            <input type="text" id="phone_number" name="phone_number" placeholder="ტელეფონის ნომერი" required>
+            {% if form.phone_number.errors %}
+                    <div class="error-message">
+                        {% for error in form.phone_number.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+          </div>
+          <!-- Input for Password -->
+
+          <!-- Input for Confirm Password -->
+
+        </div>
+
+        <!-- Submit button -->
+        <div class="button">
+          <input type="submit" value="რეგისტრაცია">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

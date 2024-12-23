@@ -1,0 +1,313 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>WeHelp</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--    <link rel="manifest" href="site.webmanifest">-->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/progressbar_barfiller.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animated-headline.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    
+</head>
+
+<body>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src=" {% static 'assets/img/logo/loder.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+        <div class="header-area header-transparent">
+            <div class="main-header ">
+                <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="c">
+                                <div class="logo">
+                                    <a href="{% url 'user:home' %}"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10">
+                                <div class="menu-wrapper d-flex align-items-center justify-content-end">
+                                    <!-- Main-menu -->
+                                    <div class="main-menu d-none d-lg-block">
+                                        <nav>
+                                            <ul id="navigation">                                                                                          
+                                                <li class="active" ><a href="{% url 'user:home' %}" style="font-size: 19px;  color: white; text-decoration: none;" onmouseover="this.style.color='#FFFF00'" onmouseout="this.style.color='white'" >მთავარი</a></li>
+                                                <li><a href="{% url 'post:post_list' %}" style="font-size: 18px; color: white; text-decoration: none;" onmouseover="this.style.color='#FFFF00'" onmouseout="this.style.color='white'">ვის შემიძლია დავეხმარო?</a>
+<!--                                                   <ul class="submenu">-->
+<!--                                                        <li></li>-->
+<!--                                                        <li></li>-->
+<!--                                                        <li><a href="elements.html">შშმ პირები</a></li>-->
+<!--                                                    </ul>-->
+                                                </li>
+<!--                                                <li><a href="about.html">About</a></li>-->
+                                                <li>
+                                                    {% if user.is_authenticated %}
+                                                        <a href="{% url 'post:create_post' %}" style="font-size: 18px; color: white; text-decoration: none;" onmouseover="this.style.color='#FFFF00'" onmouseout="this.style.color='white'">პოსტის განთავსება</a>
+                                                    {% else %}
+                                                        <a href="{% url 'user:login' %}" style="font-size: 18px; color: white; text-decoration: none;" onmouseover="this.style.color='#FFFF00'" onmouseout="this.style.color='white'">პოსტის განთავსება</a>
+                                                    {% endif %}
+
+<!--                                                <li><a href="contact.html">Contact</a></li>-->
+                                                <!-- Button -->
+                                                <!-- <li class="button-header margin-left "><a href="#" class="btn">Join</a></li> -->
+                                                <li class="button-header">
+                                                    {% if user.is_authenticated %}
+                                                        <form action="{% url 'user:logout' %}" method="post">
+                                                            {% csrf_token %}
+                                                            <button type="submit" class="btn btn3">გამოსვლა</button>
+                                                        </form>
+                                                    {% else %}
+                                                        <a href="{% url 'user:login' %}" class="btn btn3">შესვლა</a>
+                                                    {% endif %}
+                                                </li>
+
+
+                                                <!-- Profile Icon with fa-user-alt -->
+                                                <li class="profile-icon-item">
+                                                    {% if user.is_authenticated %}
+                                                        <a href="{% url 'user:profile' %}" class="profile-icon">
+                                                            <i class="fas fa-user-circle"></i>
+                                                        </a>
+                                                    {% endif %}
+                                                </li>
+
+
+
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <main>
+        <!--? slider Area Start-->
+        <section class="slider-area ">
+            <div class="slider-active">
+                <!-- Single Slider -->
+                <div class="single-slider slider-height d-flex align-items-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-7 col-md-12">
+                                <div class="hero__caption">
+<!--                                    <h1 data-animation="fadeInLeft" data-delay="0.2s">Post a Need Or <br>Become a Volunteer</h1>-->
+                                    <p data-animation="fadeInLeft" data-delay="0.4s"> </p>
+<!--                                    <a href="{% url 'user:register' %}" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s">დარეგისტრირდი</a>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>          
+                </div>
+            </div>
+        </section>
+        <!-- ? services-area -->
+        <div class="services-area">
+            <div class="container">
+                <div class="row justify-content-sm-center">
+                    <div class="col-lg-4 col-md-6 col-sm-8">
+                        <div class="single-services mb-30">
+                            <div class="features-icon">
+                                <img src="{% static 'assets/img/icon/icon1.svg' %}" alt="">
+                            </div>
+                            <div class="features-caption">
+                                <h3>გაიღე სისხლი</h3>
+                                <p>გადაარჩინე სიცოცხლე</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-8">
+                        <div class="single-services mb-30">
+                            <div class="features-icon">
+                                <img src="{% static 'assets/img/icon/icon2.svg' %}" alt="">
+                            </div>
+                            <div class="features-caption">
+                                <h3>დაეხმარე</h3>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-8">
+                        <div class="single-services mb-30">
+                            <div class="features-icon">
+                                <img src="{% static 'assets/img/icon/icon3.svg' %}" alt="">
+                            </div>
+                            <div class="features-caption">
+                                <h3>იზრუნე გარემოზე</h3>
+                                <p>გახდი ცვლილების ნაწილი</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Courses area start -->
+        <div class="courses-area section-padding40 fix">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-8">
+                        <div class="section-tittle text-center mb-55">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="courses-actives">
+
+                    <!-- Single -->
+                    <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="{% url 'user:register' %}"><img src="{% static 'assets/img/gallery/featured2.png' %}" alt=""></a>
+                            </div>
+                            <div class="properties__caption">
+                                <h3>   პოსტის განთავსება</h3>
+                                <p style="display: -webkit-box; -webkit-line-clamp: 10; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;"> <br> ნებისმიერ ადამიანს შეუძლია დაპოსტოს თავისი ან სხვისი საჭიროების შესახებ, ამისთვის დარეგისტრირდით და შეავსეთ პოსტის შექმნისთვის საჭირო ფორმა.  <br>
+                                    მოხალისის მიერ თქვენი პოსტის არჩევის და დახმარების გაწევის შემდეგ თქვენ უნდა მონიშნოთ პოსტი როგორც დასრულებული.</p>
+                                <p>
+                                </p>
+                                <a href="{% if user.is_authenticated %}{% url 'post:create_post' %}{% else %}{% url 'user:login' %}{% endif %}" class="border-btn border-btn2">დაწყება</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single -->
+                    <!-- Single -->
+                    <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="{% if user.is_authenticated %}{% url 'post:post_list' %}{% else %}{% url 'user:login' %}{% endif %}"><img src="{% static 'assets/img/gallery/featured3.png' %}" ></a>
+                            </div>
+                            <div class="properties__caption">
+                                <h3>მოხალისეები</h3>
+                                <p style="display: -webkit-box; -webkit-line-clamp: 10; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;"><br>რეგისტრაციის შემდეგ შეგიძლიათ დაათვალიეროთ და გაფილტროთ პოსტები თქვენი ინტერესებიდან გამომდინარე.  <br>პოსტის არჩევის შემდეგ მეილზე მიიღებთ პოსტის ავტორის ტელეფონის ნომერს, <br> რის შემდეგაც თავად დაეკონტაქტებით და გაიგებთ დეტალებს. <br> <br>
+
+                                </p>
+                                <a href="{% if user.is_authenticated %}{% url 'post:post_list' %}{% else %}{% url 'user:login' %}{% endif %}" class="border-btn border-btn2">დაწყება</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Single -->
+                    <!-- Single -->
+                    <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="{% url 'charityGeorgia:charity' %}"><img src="{% static 'assets/img/gallery/featured1.png' %}" alt=""></a>
+                            </div>
+                            <div class="properties__caption">
+                                <h3>ქველმოქმედება</h3>
+                                <p style="display: -webkit-box; -webkit-line-clamp: 10; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;"> <br> აქვე შეგიძლიათ გაეცნოთ ინფორმაციას საქართველოში არსებული საქველმოქმედო ორგანიზაციების და მათი საქმიანობის შესახებ
+                                <br> <br> <br> <br> <br>  </p>
+                                <a href="{% url 'charityGeorgia:charity' %}" class="border-btn border-btn2">დაწყება</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Single -->
+                </div>
+            </div>
+        </div>
+        <!-- Courses area End -->
+
+
+
+
+        <!-- Services End -->
+
+    </main>
+    <footer>
+     <div class="footer-wrappper footer-bg">
+        <!-- Footer Start-->
+        <div class="footer-area footer-padding">
+
+        </div>
+        <!-- footer-bottom area -->
+        <div class="footer-bottom-area">
+
+          </div>
+          <!-- Footer End-->
+      </div>
+  </footer> 
+  <!-- Scroll Up -->
+  <div id="back-top" >
+    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+</div>
+
+<!-- JS here -->
+<script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<!-- Jquery Mobile Menu -->
+<script src="{% static 'assets/js/jquery.slicknav.min.js' %}"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/slick.min.js' %}"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="{% static 'assets/js/wow.min.js' %}"></script>
+<script src="{% static 'assets/js/animated.headline.js' %}"></script>
+<script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
+
+<!-- Date Picker -->
+<script src="{% static 'assets/js/gijgo.min.js' %}"></script>
+<!-- Nice-select, sticky -->
+<script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+<!-- Progress -->
+<script src="{% static 'assets/js/jquery.barfiller.js' %}"></script>
+
+<!-- counter , waypoint,Hover Direction -->
+<script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'assets/js/hover-direction-snake.min.js' %}"></script>
+
+<!-- contact js -->
+<script src="{% static 'assets/js/contact.js' %}"></script>
+<script src="{% static 'assets/js/jquery.form.js' %}"></script>
+<script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'assets/js/mail-script.js' %}"></script>
+<script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+
+<!-- Jquery Plugins, main Jquery -->	
+<script src="{% static 'assets/js/plugins.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+</html>
